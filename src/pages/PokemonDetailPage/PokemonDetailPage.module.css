@@ -1,13 +1,107 @@
 .page {
-  padding: 1.5rem 0;
+  display: grid;
+  gap: 1rem;
+  padding: 0.5rem 0 1rem;
+}
+
+.headerRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.backLink {
+  color: rgba(229, 231, 235, 0.85);
+  text-decoration: none;
+}
+
+.backLink:hover {
+  text-decoration: underline;
+}
+
+.card {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1rem;
+  padding: 1rem;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.visual {
+  display: grid;
+  place-items: center;
+  padding: 1rem;
+  min-height: 240px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 10px;
+}
+
+.image {
+  width: 80%;
+  height: auto;
+  object-fit: contain;
+}
+
+.imageFallback {
+  color: rgba(229, 231, 235, 0.7);
+}
+
+.info {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.titleRow {
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
+  flex-wrap: wrap;
 }
 
 .title {
-  margin: 0 0 0.5rem;
-  font-size: 1.4rem;
+  margin: 0;
+  text-transform: capitalize;
 }
 
-.body {
+.id {
+  color: rgba(229, 231, 235, 0.7);
+}
+
+.section {
+  display: grid;
+  gap: 0.2rem;
+}
+
+.sectionTitle {
   margin: 0;
-  color: rgba(229, 231, 235, 0.78);
+  font-size: 0.95rem;
+  color: rgba(229, 231, 235, 0.85);
+}
+
+.sectionText {
+  margin: 0;
+  color: rgba(229, 231, 235, 0.9);
+  text-transform: capitalize;
+}
+
+
+.error {
+  padding: 0.75rem 0;
+  color: rgba(239, 68, 68, 0.9);
+}
+
+.retry {
+  padding: 0.35rem 0.65rem;
+  border-radius: 6px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  background: transparent;
+  color: #fff;
+  cursor: pointer;
+}
+
+.loading {
+  padding: 1rem 0;
+  color: rgba(229, 231, 235, 0.75);
 }

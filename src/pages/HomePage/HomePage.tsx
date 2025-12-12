@@ -32,7 +32,7 @@ function HomePage() {
         <input
           className={styles.search}
           type="search"
-          placeholder="Search Pokémon by name…"
+          placeholder="Search Pokemon by name…"
           value={search}
           onChange={(e) => setSearch(e.target.value)}
         />
@@ -41,14 +41,14 @@ function HomePage() {
 
       {isError && (
         <div className={styles.error}>
-          <p>Failed to load Pokémon.</p>
+          <p>Failed to load Pokemon.</p>
           <button className={styles.retry} onClick={() => refetch()}>
             Retry
           </button>
         </div>
       )}
 
-      {isLoading && <div className={styles.loading}>Loading Pokémon…</div>}
+      {isLoading && <div className={styles.loading}>Loading Pokemon…</div>}
 
       {!isLoading && (
         <div className={styles.grid}>
@@ -59,7 +59,7 @@ function HomePage() {
       )}
 
       {!isLoading && filtered.length === 0 && !isError && (
-        <div className={styles.empty}>No Pokémon match that search.</div>
+        <div className={styles.empty}>No Pokemon match that search.</div>
       )}
     </section>
   );
