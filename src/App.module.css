@@ -1,9 +1,11 @@
 .appShell {
+  height: 100vh;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   background: radial-gradient(circle at 20% 20%, #162033 0, #0b1020 38%);
   color: #e5e7eb;
+  overflow: hidden;
 }
 
 .header {
@@ -89,7 +91,12 @@
 
 .content {
   flex: 1;
+  min-height: 0;
+  overflow-y: auto;
   width: 100%;
+}
+
+.contentInner {
   max-width: 1200px;
   margin: 0 auto;
   padding: 2rem 1.5rem 3rem;
@@ -106,4 +113,6 @@
   background: rgba(11, 16, 32, 0.9);
   text-align: center;
   color: rgba(229, 231, 235, 0.75);
+  position: sticky;
+  bottom: 0;
 }

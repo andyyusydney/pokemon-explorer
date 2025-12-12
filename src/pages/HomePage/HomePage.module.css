@@ -5,16 +5,7 @@
 
 .heading {
   display: grid;
-  gap: 0.25rem;
-}
-
-.kicker {
-  margin: 0;
-  color: #93c5fd;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  font-weight: 700;
-  font-size: 0.8rem;
+  gap: 0.35rem;
 }
 
 .title {
@@ -29,19 +20,68 @@
   max-width: 600px;
 }
 
-.placeholderCard {
-  padding: 1.25rem;
+.controls {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.search {
+  flex: 1;
+  min-width: 240px;
+  max-width: 480px;
+  padding: 0.7rem 0.85rem;
   border-radius: 12px;
-  border: 1px dashed rgba(255, 255, 255, 0.2);
-  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.04);
+  color: #fff;
+  font-size: 1rem;
 }
 
-.placeholderTitle {
-  font-weight: 600;
-  margin: 0 0 0.35rem;
+.search:focus {
+  outline: 2px solid #60a5fa;
+  border-color: #60a5fa;
 }
 
-.placeholderBody {
-  margin: 0;
-  color: rgba(229, 231, 235, 0.72);
+.fetching {
+  color: rgba(229, 231, 235, 0.7);
+  font-size: 0.95rem;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 1rem;
+}
+
+.error {
+  padding: 1rem;
+  border-radius: 12px;
+  border: 1px solid rgba(239, 68, 68, 0.4);
+  background: rgba(239, 68, 68, 0.12);
+  color: #fecdd3;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.retry {
+  padding: 0.5rem 0.9rem;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: transparent;
+  color: #fff;
+  cursor: pointer;
+}
+
+.empty {
+  padding: 1rem 0;
+  color: rgba(229, 231, 235, 0.75);
+}
+
+.loading {
+  padding: 1rem 0;
+  color: rgba(229, 231, 235, 0.75);
 }
