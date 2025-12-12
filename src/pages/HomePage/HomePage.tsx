@@ -1,6 +1,7 @@
 import { useMemo, useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { fetchPokemonSummaries } from "../../api/pokemonService";
+import { useFavorites } from "../../context/FavoritesContext";
 import PokemonCard from "../../components/PokemonCard/PokemonCard";
 import styles from "./HomePage.module.css";
 
@@ -8,6 +9,7 @@ const PAGE_LIMIT = 24;
 
 function HomePage() {
   const [search, setSearch] = useState("");
+  const { favorites, addFavorite, removeFavorite } = useFavorites();
 
   const { data, isLoading, isError, refetch, isFetching } = useQuery({
     queryKey: ["pokemon", PAGE_LIMIT],
@@ -21,6 +23,15 @@ function HomePage() {
     if (!searchKeyword) return data;
     return data.filter((p) => p.name.toLowerCase().includes(searchKeyword));
   }, [data, search]);
+
+  const handleToggleFavorite = (id: number) => {
+    const key = String(id);
+    if (favorites.has(key)) {
+      removeFavorite(key);
+    } else {
+      addFavorite(key);
+    }
+  };
 
   return (
     <section className={styles.page}>
@@ -53,7 +64,12 @@ function HomePage() {
       {!isLoading && (
         <div className={styles.grid}>
           {filtered.map((pokemon) => (
-            <PokemonCard key={pokemon.id} pokemon={pokemon} />
+            <PokemonCard
+              key={pokemon.id}
+              pokemon={pokemon}
+              isFavorite={favorites.has(String(pokemon.id))}
+              onToggleFavorite={handleToggleFavorite}
+            />
           ))}
         </div>
       )}

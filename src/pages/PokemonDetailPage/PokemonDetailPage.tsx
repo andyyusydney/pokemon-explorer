@@ -1,21 +1,34 @@
 import { useQuery } from "@tanstack/react-query";
-import { useParams, Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { fetchPokemonById } from "../../api/pokemonService";
+import { useFavorites } from "../../context/FavoritesContext";
 import styles from "./PokemonDetailPage.module.css";
 
 function PokemonDetailPage() {
   const params = useParams();
   const pokemonId = Number(params.id);
+  const { favorites, addFavorite, removeFavorite } = useFavorites();
 
   const { data, isLoading, isError, refetch } = useQuery({
     queryKey: ["pokemon-detail", pokemonId],
     queryFn: () => fetchPokemonById(pokemonId),
-    enabled: Number.isFinite(pokemonId),
+    enabled: !Number.isNaN(pokemonId),
   });
 
   const primaryImage =
     data?.sprites.other?.["official-artwork"].front_default ??
     data?.sprites.front_default;
+
+  const isFavorite = favorites.has(String(pokemonId));
+
+  const toggleFavorite = () => {
+    const key = String(pokemonId);
+    if (isFavorite) {
+      removeFavorite(key);
+    } else {
+      addFavorite(key);
+    }
+  };
 
   return (
     <section className={styles.page}>
@@ -23,6 +36,11 @@ function PokemonDetailPage() {
         <Link to="/" className={styles.backLink}>
           ← Back
         </Link>
+        {!Number.isNaN(pokemonId) && (
+          <button className={styles.favoriteButton} onClick={toggleFavorite}>
+            {isFavorite ? "Unfavourite" : "Add to favourites"}
+          </button>
+        )}
       </div>
 
       {isLoading && <div className={styles.loading}>Loading Pokemon…</div>}

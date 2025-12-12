@@ -1,8 +1,7 @@
 import { type ReactElement } from 'react'
 import { Link, Navigate, Route, Routes, useLocation, useNavigate } from 'react-router-dom'
 import { useAuth } from './context/AuthContext'
-import { useFavorites } from './context/FavoritesContext'
-import { FavoritesPage, HomePage, LoginPage, PokemonDetailPage } from './pages'
+import { HomePage, LoginPage, PokemonDetailPage } from './pages'
 import styles from './App.module.css'
 
 function ProtectedRoute({ children }: { children: ReactElement }) {
@@ -19,7 +18,6 @@ function ProtectedRoute({ children }: { children: ReactElement }) {
 
 function App() {
   const { user, logout } = useAuth()
-  const { favorites } = useFavorites()
   const location = useLocation()
   const navigate = useNavigate()
 
@@ -34,20 +32,6 @@ function App() {
         <Link to={user ? '/' : '/login'} className={styles.brand}>
           Pokemon Explorer
         </Link>
-        <nav className={styles.nav}>
-          <Link
-            to="/"
-            className={location.pathname === '/' ? styles.navActive : styles.navLink}
-          >
-            Browse
-          </Link>
-          <Link
-            to="/favorites"
-            className={location.pathname === '/favorites' ? styles.navActive : styles.navLink}
-          >
-            Favourites ({favorites.size})
-          </Link>
-        </nav>
         <div className={styles.headerActions}>
           {user ? (
             <>
@@ -84,16 +68,8 @@ function App() {
                 </ProtectedRoute>
               }
             />
-            <Route
-              path="/favorites"
-              element={
-                <ProtectedRoute>
-                  <FavoritesPage />
-                </ProtectedRoute>
-              }
-            />
-            <Route path="*" element={<Navigate to="/" replace />} />
-          </Routes>
+          <Route path="*" element={<Navigate to="/" replace />} />
+        </Routes>
         </div>
       </main>
 

@@ -45,6 +45,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 0.5rem;
 }
 
 .name {
@@ -55,5 +56,15 @@
 
 .id {
   color: rgba(229, 231, 235, 0.65);
+  font-size: 0.9rem;
+}
+
+.favoriteButton {
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: transparent;
+  color: #fff;
+  border-radius: 8px;
+  padding: 0.25rem 0.6rem;
+  cursor: pointer;
   font-size: 0.9rem;
 }
