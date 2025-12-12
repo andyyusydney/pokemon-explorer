@@ -7,11 +7,12 @@ import styles from './App.module.css'
 
 function ProtectedRoute({ children }: { children: ReactElement }) {
   const { user, isLoading } = useAuth()
+  const location = useLocation()
   if (isLoading) {
     return <div className={styles.loading}>Loading session…</div>
   }
   if (!user) {
-    return <Navigate to="/login" replace />
+    return <Navigate to="/login" replace state={{ from: location.pathname }} />
   }
   return children
 }
@@ -51,7 +52,7 @@ function App() {
           {user ? (
             <>
               <span className={styles.userBadge}>{user.username}</span>
-              <button className={styles.ghostButton} onClick={handleLogout}>
+              <button className={styles.secondaryButton} onClick={handleLogout}>
                 Logout
               </button>
             </>
