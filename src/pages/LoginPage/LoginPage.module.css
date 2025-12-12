@@ -67,7 +67,6 @@
   cursor: pointer;
   background-color: rgb(229, 9, 20);
   color: #fff;
-  transition: transform 0.1s ease, filter 0.1s ease;
 }
 
 .submit:disabled {

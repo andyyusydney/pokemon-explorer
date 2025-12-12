@@ -29,10 +29,6 @@ export async function fetchPokemonList(
   return client.listPokemons(offset, limit);
 }
 
-export async function fetchPokemonByName(name: string): Promise<Pokemon> {
-  return client.getPokemonByName(name);
-}
-
 export async function fetchPokemonById(id: number): Promise<Pokemon> {
   return client.getPokemonById(id);
 }

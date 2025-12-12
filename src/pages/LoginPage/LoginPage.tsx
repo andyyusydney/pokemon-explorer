@@ -49,7 +49,6 @@ function LoginPage() {
             <input
               className={styles.input}
               type="text"
-              autoComplete="username"
               value={username}
               onChange={(e) => setUsername(e.target.value)}
               placeholder="Email or username"
@@ -61,7 +60,6 @@ function LoginPage() {
             <input
               className={styles.input}
               type="password"
-              autoComplete="current-password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               placeholder="Password"
